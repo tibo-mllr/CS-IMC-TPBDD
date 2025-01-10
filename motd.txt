@@ -1,0 +1,3 @@
+Bienvenue sur le TP Base de Données Graphe et Relationnelle!
+Pour vérifier que votre environnement est fonctionnel, assurez-vous que la commande suivante s'exécute sans erreur: python pyodbc-py2neo-test.py
+Veillez également à bien éteindre votre Codespace car le nombre d'heures octroyées par GitHub est limité: https://github.com/codespaces
