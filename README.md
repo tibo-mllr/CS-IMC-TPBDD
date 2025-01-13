@@ -218,7 +218,7 @@ Vous pourrez trouver cette base, déjà préremplie, dans le portail Azure sous 
 
 **Exercices**: Effectuez toutes les requêtes de la section précédentes en utilisant ce langage de requêtage.
 
-Barême: [0]  [0] [0] [1½] [1] [1] [1] [1] [1] [2] [11-5 (bonus)]
+Barême: [Ex1:0]  [Ex2:0] [Ex3:0] [Ex4:1] [Ex5:1] [Ex6:1] [Ex7:1] [Ex8:1] [Ex9:1.5] [Ex10:2] [Ex11:5(bonus)]
 
 ## (optionnel, 3 points bonus) Encapsulation dans des APIs serverless
 Implémentez quelques unes des requêtes du TP sous forme d'API Serverless avec Azure Function ou AWS Lambda. Mesurez les performances.
