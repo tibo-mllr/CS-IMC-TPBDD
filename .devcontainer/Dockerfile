@@ -20,7 +20,6 @@ ENV PATH="$PATH:/opt/mssql-tools18/bin"
 
 ARG VENV_PATH="/home/vscode/venv"
 COPY requirements.txt /tmp/deps/
-COPY .devcontainer/motd.txt /etc/motd
 RUN su vscode -c "python3 -m venv ${VENV_PATH}"  \
     && . ${VENV_PATH}/bin/activate \
     && pip install --no-cache-dir --disable-pip-version-check -r /tmp/deps/requirements.txt \

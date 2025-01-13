@@ -13,15 +13,15 @@ Les objectifs du TP sont les suivants:
 
 ## Prérequis
 ### GitHub Codespaces et récupération du code
-L'installation des prérequis à ce TP étant fastidieuse, nous vous avons préconfiguré un [GitHub Codespace](https://github.com/features/codespaces). Un compte GitHub sera nécessaire, sachant que les étudiants bénéficient de certains avantages via le programme [GitHub Student Developer Pack](https://education.github.com/pack).
+L'installation des prérequis à ce TP étant fastidieuse, nous vous avons préconfiguré un [GitHub Codespace](https://github.com/features/codespaces) pour lequel un compte GitHub est nécessaire. Notons que les étudiants bénéficient de certains avantages, dont des heures Codespace supplémenaires, via le programme [GitHub Student Developer Pack](https://education.github.com/pack).
 
-1. Effectuez un [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) privé de ce repository. Vous travaillerez désormais uniquement à partir de ce fork.
+1. Effectuez un [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) privé de ce repository, fork sur lequel vous travaillerez pour toute la durée du TP.
    
    ![image](https://github.com/user-attachments/assets/cb2263fe-19f9-4005-98fe-fcad811a0d5e)
 
-3. Assurez-vous d'être dans votre fork (notamment dans l'URL du navigateur)
+3. Assurez-vous d'être dans votre fork en vérifiant l'URL du navigateur.
 
-4. Créez votre codespace en cliquant sur *Create a codespace on main*. Choisissez la plus petite machine possible: le TP ne demande pas beaucoup de ressource car les tâches de calcul sont surtout effectuées par les bases de données. Si vous utilisez Firefox, désactivez l'*Enhanced Tracking Protection* sur l'URL de votre Codespace.
+4. Créez votre Codespace en cliquant sur *Create a codespace on main*. Choisissez la plus petite machine possible: le TP ne demande pas beaucoup de ressource car les tâches de calcul sont surtout effectuées par les bases de données auquelles vous vous connecterez. Si vous utilisez Firefox, désactivez l'*Enhanced Tracking Protection* sur l'URL de votre Codespace sans quoi vous ne pourrez vous y connecter.
 
 ![image](https://github.com/user-attachments/assets/337199dd-4223-4326-9e7d-4180c0792082)
 
@@ -37,25 +37,26 @@ export TPBDD_NEO4J_SERVER=bolt://...
 export TPBDD_NEO4J_USER=###A_REMPLIR###
 export TPBDD_NEO4J_PASSWORD=###A_REMPLIR###
 ```
-5. Démarrez un *nouveau* terminal et exécutez la commande suivante:
+5. Démarrez un *nouveau* terminal dans VS Code et exécutez la commande suivante:
 ```bash
 python3 pyodbc-py2neo-test.py
 ```
-6. Si elle fonctionne, alors votre environnement est valide!
+6. Si la commande fonctionne alors votre environnement est pleinement fonctionnel.
 
-⚠️ Le nombre d'heure gratuites octroyées par GitHub est limité. Lorsque votre session est terminée, veillez absolument à:
+⚠️ Le nombre d'heure gratuites octroyées par GitHub est limité. Lorsque votre session de travail est terminée, veillez impérativement à:
 1. Commiter et pusher (sync) votre code dans votre repository
 
 ![image](https://github.com/user-attachments/assets/a8f39b87-94da-4eb3-a89c-3c539c17ac88)![image](https://github.com/user-attachments/assets/ddab4349-fdab-4dc8-ac66-d725ea66303a)
 
-2. Eteindre votre Codespace depuis le [tableau de bord Codespaces](https://github.com/codespaces)
+2. Eteindre ou détruire votre Codespace depuis le [tableau de bord Codespaces](https://github.com/codespaces). Il est important de pusher votre code car même en éteignant le Codespace, votre code non commité peut être supprimé lors d'un auto-delete par GitHub.
 
 ![image](https://github.com/user-attachments/assets/f4ded3ba-31c4-4d1b-a5da-e422576a8e15)
 
+Pour reprendre votre travail, retournez sur [tableau de bord Codespaces](https://github.com/codespaces) puis cliquez sur le nom de votre Codespace si vous l'aviez éteint, ou créez-en un nouveau depuis votre fork.
 
 ### Outillage
-1. Il est conseiller de passer l'interface du portail Azure en **anglais** afin de suivre plus facilement les instructions du TP.
-2. Si vous le pouvez, installez [Azure Data Studio](https://docs.microsoft.com/fr-fr/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15) pour faciliter la création de vos requêtes SQL. Si ce n'est pas possible, vous pourrez également effectuer les requêtes depuis votre navigateur via [portail Azure](https://portal.azure.com), en ouvrant la page correspondant à la base de données SQL `tpbdd-sqlserver/tpbdd-sql`
+1. Il est conseillé de passer l'interface du portail Azure en **anglais** afin de suivre plus facilement les instructions du TP.
+2. Pour la Partie 1 consacrée à SQL et si vous le pouvez, installez [Azure Data Studio](https://docs.microsoft.com/fr-fr/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15) pour faciliter la création de vos requêtes SQL. Si ce n'est pas possible, vous pourrez également effectuer les requêtes depuis votre navigateur via [portail Azure](https://portal.azure.com), en ouvrant la page correspondant à la base de données SQL `tpbdd-sqlserver/tpbdd-sql`.
 
 # Partie 1 - Base de données relationnelle - Azure SQL Database
 Ecrire les requêtes ci-dessous, et les expliquer en deux ou trois phrases maximum en français ou en anglais.
@@ -93,13 +94,12 @@ Pour la suite du TP, nous aurons besoin de créer une base de données Neo4j en 
 2. Parmi les templates, créez une base vierge (*Blank sandbox*)
 3. Dans le portail Neo4j (un lien vous a été envoyé par email), dépliez la ligne correspondant à votre sandbox puis allez dans l'onglet **Connection details** pour noter ces informations de connexion
 ![image](https://user-images.githubusercontent.com/22498922/147907013-ae0f0d32-7982-464b-969a-576646407c9c.png)
-4. ⚠️ Modifiez votre fichier `.env` les variables d'environnement nécessaires à la connexion à votre base Neo4j
+4. ⚠️ Modifiez votre fichier `.env` les variables d'environnement nécessaires à la connexion à votre base Neo4j qui sera détruite au bout de 2 jours (mais vous pouvez la prolonger ou la reconstruire très facilement une fois la Partie 3 du TP réalisée)
     ```sh
-    export TPBDD_NEO4J_SERVER=
+    export TPBDD_NEO4J_SERVER=bolt://...
     export TPBDD_NEO4J_USER=
     export TPBDD_NEO4J_PASSWORD=
     ```
-    Définissez ces variables d'environnement dans votre shell ou redémarrez-le - sans quoi vous pointerez vers la base de données de test qui sera supprimée 1j après le TP.
 
 ## Cypher 
 Le langage de requêtage utilisé par Neo4j est [Cypher](https://neo4j.com/developer/cypher/). Vous trouverez sa [documentation officielle](https://neo4j.com/docs/cypher-refcard/current/) sur le site de Neo4j.
@@ -180,7 +180,7 @@ RETURN n
 Pour supprimer des noeuds, utilisez le statement `DELETE`.
 
 # Partie 3 - Export des données vers un modèle graphe
-1. Dans le dossier `tp`, complétez le programme [export-neo4j.py](TP-Bdd-src/export-neo4j.py) aux endroits notés `A COMPLETER`. N'hésitez pas à déboguer en ajoutant des `print`, créer des programmes de test etc. Utilisez les fonctions [`create_nodes` et `create_relationships`](https://py2neo.org/2021.0/bulk/index.html) de **py2neo**.
+1. Dans le dossier `tp`, complétez le programme [export-neo4j.py](export-neo4j.py) aux endroits notés `A COMPLETER`. N'hésitez pas à déboguer en ajoutant des `print`, créer des programmes de test etc. Utilisez les fonctions [`create_nodes` et `create_relationships`](https://neo4j-contrib.github.io/py2neo/bulk/index.html) de **py2neo**.
 2. Effectuez l'export vers votre base Neo4j Sandbox
 3. (optionnel, 2 points bonus) Décrivez de quelle manière l'environnement de développement a été préconfiguré pour vous:
     - Environnement Python
@@ -212,13 +212,13 @@ Ecrire les requêtes ci-dessous, et les expliquer en deux ou trois phrases maxim
 **Exercice 11** (2 pt): Trouver le nom du ou des film(s) ayant le plus d'acteurs.
 
 ## Requêtes graphe (Gremlin)
-Une autre base de données graphe a été créée pour ce TP.  Elle utilise la technologie Cosmos DB et utilise un langage de requêtage différent: [Apache Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps).
+Une autre base de données graphe a été créée pour ce TP.  Elle utilise la technologie Cosmos DB, une base de donnée multi-paradigme sur Azure. Pour le paradigme graphe et contrairement à Cypher, Cosmos DB utilise un langage de requêtage open source: [Apache Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps).
 
 Vous pourrez trouver cette base, déjà préremplie, dans le portail Azure sous le nom `tpbdd-movies-cdb`. Vous pourrez y effectuer des requêtes en utilisant l'onglet **Data Explorer**.
 
 **Exercices**: Effectuez toutes les requêtes de la section précédentes en utilisant ce langage de requêtage.
 
-Barême: [1-¼]  [2-¼] [3-¼] [4-¼] [5-¼] [6-¼] [7-½] [8-1,5] [9-2] [10-2] [11-5 (bonus)]
+Barême: [0]  [0] [0] [1½] [1] [1] [1] [1] [1] [2] [11-5 (bonus)]
 
 ## (optionnel, 3 points bonus) Encapsulation dans des APIs serverless
 Implémentez quelques unes des requêtes du TP sous forme d'API Serverless avec Azure Function ou AWS Lambda. Mesurez les performances.

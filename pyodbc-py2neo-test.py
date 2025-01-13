@@ -40,10 +40,9 @@ try:
 except Exception as error:
 	print(error)
 	print("Causes possibles:")
-	print("  - L'IP de votre container n'a pas été ajoutée aux exceptions de firewall de la base SQL (voir énoncé du TP, section Prérequis)")
-	print("  - Si vous avez un timeout, réessayez dans quelques secondes pour donner à la base de données le temps de se 'réveiller'.")
+	print("  - Votre fichier .env est incorrect")
+	print("  - Votre fichier .env est vraiment incorrect")
 
 print()
-print("L'énoncé du TP est disponible sur: https://github.com/lvovan/CS-IMC/blob/main/TP%20Bdd%20Graphe%20et%20Relationnelle.md")
-
+print("L'énoncé et le repository original du TP est disponible sur: https://github.com/lvovan/CS-IMC-TPBDD")
 print()
