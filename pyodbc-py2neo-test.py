@@ -6,6 +6,11 @@ from py2neo import Graph
 from py2neo.bulk import create_nodes, create_relationships
 from py2neo.data import Node
 
+# Check if .env exists
+if not os.path.isfile(".env"):
+	print("Le fichier .env définissant les informations de connexion aux bases de données est manquant.")
+	exit(1)
+
 dotenv.load_dotenv()
 
 server = os.environ["TPBDD_SERVER"]
@@ -17,10 +22,6 @@ driver= os.environ["ODBC_DRIVER"]
 neo4j_server = os.environ["TPBDD_NEO4J_SERVER"]
 neo4j_user = os.environ["TPBDD_NEO4J_USER"]
 neo4j_password = os.environ["TPBDD_NEO4J_PASSWORD"]
-
-if len(server)==0 or len(database)==0 or len(username)==0 or len(password)==0 or len(neo4j_server)==0 or len(neo4j_user)==0 or len(neo4j_password)==0:
-	print("Au moins une des variables d'environnement n'a pas été initialisée.")
-	exit(1)
 
 try:
 	print("Test de connexion avec py2neo...", end="", flush=True)
