@@ -1,5 +1,3 @@
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=914934524)
-
 # Travaux Pratiques Bases de Données Relationnelles et Graphes
 Dans ce TP, nous allons travailler sur des jeux de données publics issus des [datasets IMDB](https://datasets.imdbws.com/)). Au démarrage du TP, ceux-ci sont disponibles dans une base de données relationelle [Azure SQL Database](https://docs.microsoft.com/fr-fr/azure/azure-sql/database/sql-database-paas-overview). Les objectifs du TP sont les suivants:
 
@@ -33,7 +31,7 @@ Ecrire les requêtes ci-dessous, et les expliquer en deux ou trois phrases maxim
 
 **Exercice 0**: Décrivez les tables et les attributs.
 
-**Exercice 1** (¼ pt): Visualisez l'année de naissance de l'artiste `Jude Law`.
+**Exercice 1** (¼ pt): Visualisez l'année de naissance de l'artiste `Brad Pitt`.
 
 **Exercice 2** (¼ pt): Comptez le nombre d'artistes présents dans la base de donnee. 
 
@@ -166,11 +164,11 @@ Ecrire les requêtes ci-dessous, et les expliquer en deux ou trois phrases maxim
 
 **Exercice 4** (½ pt): Ajoutez deux de vos professeurs/enseignants comme réalisateurs/réalisatrices de ce film.
 
-**Exercice 5** (½ pt): Affichez le noeud représentant l'acteur nommé `Jude Law`, et visualisez son année de naissance.
+**Exercice 5** (½ pt): Affichez le noeud représentant l'actrice nommée `Nicole Kidman`, et visualisez son année de naissance.
 
 **Exercice 6** (½ pt): Visualisez l'ensemble des films.
 
-**Exercice 7** (½ pt): Trouvez les noms des artistes nés en `1960`, affichez ensuite leur nombre.
+**Exercice 7** (½ pt): Trouvez les noms des artistes nés en `1963`, affichez ensuite leur nombre.
 
 **Exercice 8** (1 pt): Trouver l'ensemble des acteurs (sans entrées doublons) qui ont joué dans plus d'un film.
 
