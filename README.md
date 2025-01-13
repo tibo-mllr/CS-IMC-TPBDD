@@ -26,21 +26,21 @@ L'installation des prérequis à ce TP étant fastidieuse, nous vous avons préc
 ![image](https://github.com/user-attachments/assets/337199dd-4223-4326-9e7d-4180c0792082)
 
 6. Créez un fichier `.env` à la racine de votre repository avec le contenu suivant (certaines valeurs seront fournies par l'enseignant):
-```bash
-export TPBDD_SERVER=tpbdd-sqlserver.database.windows.net
-export TPBDD_DB=tpbdd-sql
-export TPBDD_USERNAME=sqluser-read
-export TPBDD_PASSWORD=###A_REMPLIR###
-export ODBC_DRIVER={ODBC Driver 18 for SQL Server}
+    ```sh
+    TPBDD_SERVER=tpbdd-sqlserver.database.windows.net
+    TPBDD_DB=tpbdd-sql
+    TPBDD_USERNAME=sqluser-read
+    TPBDD_PASSWORD=###A_REMPLIR###
+    ODBC_DRIVER={ODBC Driver 18 for SQL Server}
 
-export TPBDD_NEO4J_SERVER=bolt://...
-export TPBDD_NEO4J_USER=###A_REMPLIR###
-export TPBDD_NEO4J_PASSWORD=###A_REMPLIR###
-```
+    TPBDD_NEO4J_SERVER=bolt://...
+    TPBDD_NEO4J_USER=###A_REMPLIR###
+    TPBDD_NEO4J_PASSWORD=###A_REMPLIR###
+    ```
 5. Démarrez un *nouveau* terminal dans VS Code et exécutez la commande suivante:
-```bash
-python3 pyodbc-py2neo-test.py
-```
+    ```sh
+    python3 pyodbc-py2neo-test.py
+    ```
 6. Si la commande fonctionne alors votre environnement est pleinement fonctionnel.
 
 ⚠️ Le nombre d'heure gratuites octroyées par GitHub est limité. Lorsque votre session de travail est terminée, veillez impérativement à:
@@ -94,11 +94,11 @@ Pour la suite du TP, nous aurons besoin de créer une base de données Neo4j en 
 2. Parmi les templates, créez une base vierge (*Blank sandbox*)
 3. Dans le portail Neo4j (un lien vous a été envoyé par email), dépliez la ligne correspondant à votre sandbox puis allez dans l'onglet **Connection details** pour noter ces informations de connexion
 ![image](https://user-images.githubusercontent.com/22498922/147907013-ae0f0d32-7982-464b-969a-576646407c9c.png)
-4. ⚠️ Modifiez votre fichier `.env` les variables d'environnement nécessaires à la connexion à votre base Neo4j (onglet *Connection details* du portail Neo4j). Notez que les bases sandbox sont automatiquement détruites au bout de 2 jours (mais vous pouvez la prolonger ou la reconstruire très facilement une fois la Partie 3 du TP réalisée)
+4. ⚠️ Modifiez votre fichier `.env` les variables d'environnement nécessaires à la connexion à votre base Neo4j. Notez que les bases sandbox sont automatiquement détruites au bout de 2 jours mais vous pouvez la prolonger ou la reconstruire très facilement une fois la Partie 3 du TP réalisée.
     ```sh
-    export TPBDD_NEO4J_SERVER=<Bolt URL au format bolt://...>
-    export TPBDD_NEO4J_USER=<Username>
-    export TPBDD_NEO4J_PASSWORD=<Password>
+    TPBDD_NEO4J_SERVER=<Bolt URL au format bolt://...>
+    TPBDD_NEO4J_USER=<Username>
+    TPBDD_NEO4J_PASSWORD=<Password>
     ```
 
 ## Cypher 
