@@ -44,8 +44,14 @@ python3 pyodbc-py2neo-test.py
 6. Si elle fonctionne, alors votre environnement est valide!
 
 ⚠️ Le nombre d'heure gratuites octroyées par GitHub est limité. Lorsque votre session est terminée, veillez absolument à:
-    1. Commiter et pusher (sync) votre code dans votre repository
-    2. Eteindre votre Codespace depuis le [tableau de bord Codespaces](https://github.com/codespaces)
+1. Commiter et pusher (sync) votre code dans votre repository
+
+![image](https://github.com/user-attachments/assets/a8f39b87-94da-4eb3-a89c-3c539c17ac88)![image](https://github.com/user-attachments/assets/ddab4349-fdab-4dc8-ac66-d725ea66303a)
+
+2. Eteindre votre Codespace depuis le [tableau de bord Codespaces](https://github.com/codespaces)
+
+![image](https://github.com/user-attachments/assets/f4ded3ba-31c4-4d1b-a5da-e422576a8e15)
+
 
 ### Outillage
 1. Il est conseiller de passer l'interface du portail Azure en **anglais** afin de suivre plus facilement les instructions du TP.
