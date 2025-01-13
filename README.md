@@ -16,11 +16,13 @@ Les objectifs du TP sont les suivants:
 L'installation des prérequis à ce TP étant fastidieuse, nous vous avons préconfiguré un [GitHub Codespace](https://github.com/features/codespaces). Un compte GitHub sera nécessaire, sachant que les étudiants bénéficient de certains avantages via le programme [GitHub Student Developer Pack](https://education.github.com/pack).
 
 1. Effectuez un [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) privé de ce repository. Vous travaillerez désormais uniquement à partir de ce fork.
+   
    ![image](https://github.com/user-attachments/assets/cb2263fe-19f9-4005-98fe-fcad811a0d5e)
 
 3. Assurez-vous d'être dans votre fork (notamment dans l'URL du navigateur)
 
-4. Créez votre codespace en cliquant sur *Create a codespace on main*. Choisissez la plus petite machine possible: le TP ne demande pas beaucoup de ressource car les tâches de calcul sont surtout effectuées par les bases de données.
+4. Créez votre codespace en cliquant sur *Create a codespace on main*. Choisissez la plus petite machine possible: le TP ne demande pas beaucoup de ressource car les tâches de calcul sont surtout effectuées par les bases de données. Si vous utilisez Firefox, désactivez l'*Enhanced Tracking Protection* sur l'URL de votre Codespace.
+
 ![image](https://github.com/user-attachments/assets/337199dd-4223-4326-9e7d-4180c0792082)
 
 6. Créez un fichier `.env` à la racine de votre repository avec le contenu suivant (certaines valeurs seront fournies par l'enseignant):
@@ -34,12 +36,6 @@ export ODBC_DRIVER={ODBC Driver 18 for SQL Server}
 export TPBDD_NEO4J_SERVER=bolt://...
 export TPBDD_NEO4J_USER=###A_REMPLIR###
 export TPBDD_NEO4J_PASSWORD=###A_REMPLIR###
-
-# Just the account name, no https:// or URL suffix
-export TPBDD_COSMOSDB_ACCOUNT=tpbdd-movies-cdb
-export TPBDD_COSMOSDB_GRAPH=tpbdd-movies-graph
-export TPBDD_COSMOSDB_PASSWORD=##A_REMPLIR##
-
 ```
 5. Démarrez un *nouveau* terminal et exécutez la commande suivante:
 ```bash
