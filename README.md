@@ -1,28 +1,54 @@
 # Travaux Pratiques Bases de Données Relationnelles et Graphes
-Dans ce TP, nous allons travailler sur des jeux de données publics issus des [datasets IMDB](https://datasets.imdbws.com/)). Au démarrage du TP, ceux-ci sont disponibles dans une base de données relationelle [Azure SQL Database](https://docs.microsoft.com/fr-fr/azure/azure-sql/database/sql-database-paas-overview). Les objectifs du TP sont les suivants:
+Dans ce TP, nous allons travailler sur des jeux de données publics issus des [datasets IMDB](https://datasets.imdbws.com/)). Ces données sont disponibles dès le démarrage du TP dans une base de données relationelle [Azure SQL Database](https://docs.microsoft.com/fr-fr/azure/azure-sql/database/sql-database-paas-overview).
+
+Les objectifs du TP sont les suivants:
 
 1. Se familiariser avec les différences de paradigme entre le requêtage relationnel et graphe
-2. Transformer les données pour les exporter vers une base de données graphe Neo4j
+2. Transformer les données pour les exporter depuis la base de données relationelle SQL, vers une base de données graphe Neo4j
 3. Implémenter un ensemble de requêtes:
     - en SQL sur la base de donnée relationelle [Azure SQL Database](https://docs.microsoft.com/fr-fr/azure/azure-sql/database/sql-database-paas-overview)
     - en [Cypher](https://neo4j.com/developer/cypher/) sur la base de données graphe [Neo4j](https://neo4j.com/)
     - en [Apache Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps) sur une base de données graphe répartie [Cosmos Db](https://docs.microsoft.com/en-us/azure/cosmos-db/graph/graph-introduction)
 4. (optionnel) Encapsuler ces requêtes dans des API serverless (Azure Functions) et mesurer les performances
 
-## Prérequis - Création et connexion aux bases de données
-Pour ce TP, il est fortement conseillé de:
-- Réaliser cette partie du TP sur une machine Linux (à date, certains composants ont des incompatibilités avec Windows et OSX)
-- Passer l'interface en **anglais** afin de suivre plus facilement les instructions du TP
+## Prérequis
+### GitHub Codespaces et récupération du code
+L'installation des prérequis à ce TP étant fastidieuse, nous vous avons préconfiguré un [GitHub Codespace](https://github.com/features/codespaces). Un compte GitHub sera nécessaire, sachant que les étudiants bénéficient de certains avantages via le programme [GitHub Student Developer Pack](https://education.github.com/pack).
 
-Les enseignants vous fourniront les informations de connexion à trois bases de données (Azure SQL Database, Neo4j et Cosmos DB).
+1. Effectuez un [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) privé de ce repository. Vous travaillerez désormais uniquement à partir de ce fork.
+2. Assurez-vous d'être dans votre fork (notamment dans l'URL du navigateur)
+3. Créez votre codespace en cliquant sur *Create a codespace on main*. Choisissez la plus petite machine possible: le TP ne demande pas beaucoup de ressource car les tâches de calcul sont surtout effectuées par les bases de données.
+4. Créez un fichier `.env` à la racine de votre repository avec le contenu suivant:
+```bash
+export TPBDD_SERVER=tpbdd-sqlserver.database.windows.net
+export TPBDD_DB=tpbdd-sql
+export TPBDD_USERNAME=sqluser-read
+export TPBDD_PASSWORD=###A_REMPLIR###
+export ODBC_DRIVER={ODBC Driver 18 for SQL Server}
 
-1. Si possible, installez [Azure Data Studio](https://docs.microsoft.com/fr-fr/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15) pour faciliter la création de vos requêtes SQL. Si ce n'est pas possible, vous pourrez également effectuer les requêtes depuis votre navigateur.
-2. Connectez-vous au [portail Azure](https://portal.azure.com), et ouvrez la page correspondant la base de données SQL `tpbdd-movies-db`
-3. Dans la barre d'outil, cliquez sur *Set server firewall*
-    ![image](https://user-images.githubusercontent.com/22498922/211506443-ddbbace3-c6ee-488f-9385-0a1ed2805851.png)
-4. Cliquez sur le bouton *Add your client IPv4 address (x.x.x.x)* puis sur *Save*
-    ![image](https://user-images.githubusercontent.com/22498922/211505129-a9bf661b-ab99-4f0d-a2f5-5eaf300d198f.png)
-5. Un environnement de développement a été préparé pour la partie codage, vous pouvez vous y connecter en SSH en utilisant les information de connexion fournies par les enseignants. Vous pouvez éditer les fichiers directement avec `vim` ou `nano` mais nous vous conseillons fortement d'utiliser [Visual Studio Code](https://code.visualstudio.com/) et son extension [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) pour éditer le code distant avec un maximum de confort.
+export TPBDD_NEO4J_SERVER=bolt://...
+export TPBDD_NEO4J_USER=###A_REMPLIR###
+export TPBDD_NEO4J_PASSWORD=###A_REMPLIR###
+
+# Just the account name, no https:// or URL suffix
+export TPBDD_COSMOSDB_ACCOUNT=tpbdd-movies-cdb
+export TPBDD_COSMOSDB_GRAPH=tpbdd-movies-graph
+export TPBDD_COSMOSDB_PASSWORD=##A_REMPLIR##
+
+```
+5. Démarrez un nouveau terminal et exécutez la commande suivante:
+```bash
+python3 pyodbc-py2neo-test.py
+```
+6. Si elle fonctionne, alors votre environnement est valide!
+
+⚠️ Le nombre d'heure gratuites octroyées par GitHub est limité. Lorsque votre session est terminée, veillez absolument à:
+    1. Commiter et pusher (sync) votre code dans votre repository
+    2. Eteindre votre Codespace depuis le [tableau de bord Codespaces](https://github.com/codespaces)
+
+### Outillage
+1. Il est conseiller de passer l'interface du portail Azure en **anglais** afin de suivre plus facilement les instructions du TP.
+2. Si vous le pouvez, installez [Azure Data Studio](https://docs.microsoft.com/fr-fr/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15) pour faciliter la création de vos requêtes SQL. Si ce n'est pas possible, vous pourrez également effectuer les requêtes depuis votre navigateur via [portail Azure](https://portal.azure.com), en ouvrant la page correspondant à la base de données SQL `tpbdd-sqlserver/tpbdd-sql`
 
 # Partie 1 - Base de données relationnelle - Azure SQL Database
 Ecrire les requêtes ci-dessous, et les expliquer en deux ou trois phrases maximum en français ou en anglais.
@@ -60,7 +86,7 @@ Pour la suite du TP, nous aurons besoin de créer une base de données Neo4j en 
 2. Parmi les templates, créez une base vierge (*Blank sandbox*)
 3. Dans le portail Neo4j (un lien vous a été envoyé par email), dépliez la ligne correspondant à votre sandbox puis allez dans l'onglet **Connection details** pour noter ces informations de connexion
 ![image](https://user-images.githubusercontent.com/22498922/147907013-ae0f0d32-7982-464b-969a-576646407c9c.png)
-4. ⚠️ Modifiez la fin du fichier `~/.bashrc` les variables d'environnement nécessaires à la connexion à votre base Neo4j
+4. ⚠️ Modifiez votre fichier `.env` les variables d'environnement nécessaires à la connexion à votre base Neo4j
     ```sh
     export TPBDD_NEO4J_SERVER=
     export TPBDD_NEO4J_USER=
