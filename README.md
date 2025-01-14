@@ -55,13 +55,13 @@ La partie 2 du TP requiert la création d'une base de données Neo4j en mode "ba
 ⚠️ Le nombre d'heure gratuites octroyées par GitHub est limité. Lorsque votre session de travail est terminée, veillez impérativement à:
 1. Commiter et pusher (sync) votre code dans votre repository
 
-![image](https://github.com/user-attachments/assets/a8f39b87-94da-4eb3-a89c-3c539c17ac88)![image](https://github.com/user-attachments/assets/ddab4349-fdab-4dc8-ac66-d725ea66303a)
+    ![image](https://github.com/user-attachments/assets/a8f39b87-94da-4eb3-a89c-3c539c17ac88)![image](https://github.com/user-attachments/assets/ddab4349-fdab-4dc8-ac66-d725ea66303a)
 
 2. Eteindre ou détruire votre Codespace depuis le [tableau de bord Codespaces](https://github.com/codespaces). Il est important de pusher votre code car même en éteignant le Codespace, votre code non commité peut être supprimé lors d'un auto-delete par GitHub.
 
-![image](https://github.com/user-attachments/assets/f4ded3ba-31c4-4d1b-a5da-e422576a8e15)
+    ![image](https://github.com/user-attachments/assets/f4ded3ba-31c4-4d1b-a5da-e422576a8e15)
 
-Pour reprendre votre travail, retournez sur [tableau de bord Codespaces](https://github.com/codespaces) puis cliquez sur le nom de votre Codespace si vous l'aviez éteint, ou créez-en un nouveau depuis votre fork.
+    Pour reprendre votre travail, retournez sur [tableau de bord Codespaces](https://github.com/codespaces) puis cliquez sur le nom de votre Codespace si vous l'aviez éteint, ou créez-en un nouveau depuis votre fork.
 
 ### Optionnel: Outillage
 1. Il est conseillé de passer l'interface du portail Azure en **anglais** afin de suivre plus facilement les instructions du TP.
