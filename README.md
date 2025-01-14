@@ -34,7 +34,11 @@ La partie 2 du TP requiert la création d'une base de données Neo4j en mode "ba
 4. ⚠️ Modifiez votre fichier `.env` les variables d'environnement nécessaires à la connexion à votre base Neo4j. Notez que les bases sandbox sont automatiquement détruites au bout de 2 jours mais vous pouvez la prolonger ou la reconstruire très facilement une fois la Partie 3 du TP réalisée.
 
 ### Mise à jour du fichier de configuration (.env)
-1. Enregistrez le fichier `.env` fourni par l'enseignant à la racine du dossier local du repository, et mettez le à jour avec le contenu suivant:
+1. Téléchargez le fichier fourni par l'enseignant `.env`:
+    ```
+    wget <URL> -O .env
+    ```
+2. Mettez à jour ce fichier avec le contenu suivant:
     ```sh
     TPBDD_SERVER=tpbdd-sqlserver.database.windows.net
     TPBDD_DB=tpbdd-sql
@@ -43,21 +47,21 @@ La partie 2 du TP requiert la création d'une base de données Neo4j en mode "ba
     ODBC_DRIVER={ODBC Driver 18 for SQL Server}
 
     TPBDD_NEO4J_SERVER=<Bolt URL au format bolt://...>
-    TPBDD_NEO4J_USER=<Neo4j username>
+    TPBDD_NEO4J_USER=neo4j
     TPBDD_NEO4J_PASSWORD=<Neo4j password>
     ```
-2. Démarrez un *nouveau* terminal dans VS Code et exécutez la commande suivante:
+3. Démarrez un *nouveau* terminal dans VS Code et exécutez la commande suivante:
     ```sh
     python3 pyodbc-py2neo-test.py
     ```
-3. Si la commande fonctionne alors votre environnement est pleinement fonctionnel.
+4. Si la commande fonctionne alors votre environnement est pleinement fonctionnel.
 
 ⚠️ Le nombre d'heure gratuites octroyées par GitHub est limité. Lorsque votre session de travail est terminée, veillez impérativement à:
-1. Commiter et pusher (sync) votre code dans votre repository
+- Commiter et pusher (sync) votre code dans votre repository
 
     ![image](https://github.com/user-attachments/assets/a8f39b87-94da-4eb3-a89c-3c539c17ac88)![image](https://github.com/user-attachments/assets/ddab4349-fdab-4dc8-ac66-d725ea66303a)
 
-2. Eteindre ou détruire votre Codespace depuis le [tableau de bord Codespaces](https://github.com/codespaces). Il est important de pusher votre code car même en éteignant le Codespace, votre code non commité peut être supprimé lors d'un auto-delete par GitHub.
+- Eteindre ou détruire votre Codespace depuis le [tableau de bord Codespaces](https://github.com/codespaces). Il est important de pusher votre code car même en éteignant le Codespace, votre code non commité peut être supprimé lors d'un auto-delete par GitHub.
 
     ![image](https://github.com/user-attachments/assets/f4ded3ba-31c4-4d1b-a5da-e422576a8e15)
 
