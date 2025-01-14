@@ -25,23 +25,32 @@ L'installation des prérequis à ce TP étant fastidieuse, nous vous avons préc
 
 ![image](https://github.com/user-attachments/assets/337199dd-4223-4326-9e7d-4180c0792082)
 
-6. Créez un fichier `.env` à la racine de votre repository avec le contenu suivant (certaines valeurs seront fournies par l'enseignant):
+### Création d'une base graphe Neo4j
+La partie 2 du TP requiert la création d'une base de données Neo4j en mode "bac à sable" (Sandbox). Pour cela:
+1. Créez une base de données  [Neo4j Sandbox](https://neo4j.com/sandbox/). Utilisez les informations que vous souhaitez pour la création de compte.
+2. Parmi les templates, créez une base vierge (*Blank sandbox*)
+3. Dans le portail Neo4j (un lien vous a été envoyé par email), dépliez la ligne correspondant à votre sandbox puis allez dans l'onglet **Connection details** pour noter ces informations de connexion
+![image](https://user-images.githubusercontent.com/22498922/147907013-ae0f0d32-7982-464b-969a-576646407c9c.png)
+4. ⚠️ Modifiez votre fichier `.env` les variables d'environnement nécessaires à la connexion à votre base Neo4j. Notez que les bases sandbox sont automatiquement détruites au bout de 2 jours mais vous pouvez la prolonger ou la reconstruire très facilement une fois la Partie 3 du TP réalisée.
+
+### Mise à jour du fichier de configuration (.env)
+1. Enregistrez le fichier `.env` fourni par l'enseignant à la racine du dossier local du repository, et mettez le à jour avec le contenu suivant:
     ```sh
     TPBDD_SERVER=tpbdd-sqlserver.database.windows.net
     TPBDD_DB=tpbdd-sql
-    TPBDD_USERNAME=sqluser-read
-    TPBDD_PASSWORD=###A_REMPLIR###
+    TPBDD_USERNAME=sqlread-user
+    TPBDD_PASSWORD=<pré-rempli>
     ODBC_DRIVER={ODBC Driver 18 for SQL Server}
 
-    TPBDD_NEO4J_SERVER=bolt://...
-    TPBDD_NEO4J_USER=###A_REMPLIR###
-    TPBDD_NEO4J_PASSWORD=###A_REMPLIR###
+    TPBDD_NEO4J_SERVER=<Bolt URL au format bolt://...>
+    TPBDD_NEO4J_USER=<Neo4j username>
+    TPBDD_NEO4J_PASSWORD=<Neo4j password>
     ```
-5. Démarrez un *nouveau* terminal dans VS Code et exécutez la commande suivante:
+2. Démarrez un *nouveau* terminal dans VS Code et exécutez la commande suivante:
     ```sh
     python3 pyodbc-py2neo-test.py
     ```
-6. Si la commande fonctionne alors votre environnement est pleinement fonctionnel.
+3. Si la commande fonctionne alors votre environnement est pleinement fonctionnel.
 
 ⚠️ Le nombre d'heure gratuites octroyées par GitHub est limité. Lorsque votre session de travail est terminée, veillez impérativement à:
 1. Commiter et pusher (sync) votre code dans votre repository
@@ -54,7 +63,7 @@ L'installation des prérequis à ce TP étant fastidieuse, nous vous avons préc
 
 Pour reprendre votre travail, retournez sur [tableau de bord Codespaces](https://github.com/codespaces) puis cliquez sur le nom de votre Codespace si vous l'aviez éteint, ou créez-en un nouveau depuis votre fork.
 
-### Outillage
+### Optionnel: Outillage
 1. Il est conseillé de passer l'interface du portail Azure en **anglais** afin de suivre plus facilement les instructions du TP.
 2. Pour la Partie 1 consacrée à SQL et si vous le pouvez, installez [Azure Data Studio](https://docs.microsoft.com/fr-fr/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15) pour faciliter la création de vos requêtes SQL. Si ce n'est pas possible, vous pourrez également effectuer les requêtes depuis votre navigateur via [portail Azure](https://portal.azure.com), en ouvrant la page correspondant à la base de données SQL `tpbdd-sqlserver/tpbdd-sql`.
 
@@ -87,19 +96,6 @@ Neo4j est une base de données graphe. Les données sont représentées par des 
 2. Les *relations* connectent les nœuds
 3. Les *propriétés* sont des paires clé-valeur pouvant être associées à des nœuds ou des relations
 4. Les relations ont des *directions*: unidirectionnelles et bidirectionnelles
-
-## Création d'une base de données Neo4j
-Pour la suite du TP, nous aurons besoin de créer une base de données Neo4j en mode "bac à sable" (Sandbox). Pour cela:
-1. Créez une base de données  [Neo4j Sandbox](https://neo4j.com/sandbox/). Utilisez les informations que vous souhaitez pour la création de compte.
-2. Parmi les templates, créez une base vierge (*Blank sandbox*)
-3. Dans le portail Neo4j (un lien vous a été envoyé par email), dépliez la ligne correspondant à votre sandbox puis allez dans l'onglet **Connection details** pour noter ces informations de connexion
-![image](https://user-images.githubusercontent.com/22498922/147907013-ae0f0d32-7982-464b-969a-576646407c9c.png)
-4. ⚠️ Modifiez votre fichier `.env` les variables d'environnement nécessaires à la connexion à votre base Neo4j. Notez que les bases sandbox sont automatiquement détruites au bout de 2 jours mais vous pouvez la prolonger ou la reconstruire très facilement une fois la Partie 3 du TP réalisée.
-    ```sh
-    TPBDD_NEO4J_SERVER=<Bolt URL au format bolt://...>
-    TPBDD_NEO4J_USER=<Username>
-    TPBDD_NEO4J_PASSWORD=<Password>
-    ```
 
 ## Cypher 
 Le langage de requêtage utilisé par Neo4j est [Cypher](https://neo4j.com/developer/cypher/). Vous trouverez sa [documentation officielle](https://neo4j.com/docs/cypher-refcard/current/) sur le site de Neo4j.

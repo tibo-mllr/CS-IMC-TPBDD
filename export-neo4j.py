@@ -6,7 +6,7 @@ from py2neo import Graph
 from py2neo.bulk import create_nodes, create_relationships
 from py2neo.data import Node
 
-dotenv.load_dotenv()
+dotenv.load_dotenv(override=True)
 
 server = os.environ["TPBDD_SERVER"]
 database = os.environ["TPBDD_DB"]

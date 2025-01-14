@@ -11,7 +11,7 @@ if not os.path.isfile(".env"):
 	print("Le fichier .env définissant les informations de connexion aux bases de données est manquant.")
 	exit(1)
 
-dotenv.load_dotenv()
+dotenv.load_dotenv(override=True)
 
 server = os.environ["TPBDD_SERVER"]
 database = os.environ["TPBDD_DB"]
